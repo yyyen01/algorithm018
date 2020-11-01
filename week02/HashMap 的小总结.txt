@@ -1,0 +1,29 @@
+HashMap 的小总结
+----------------
+
+Class structure
+----------------
+HashMap is based on the realization of the hash table Map interface.
+The HashMap comprises an array and linked lists.
+HashMap calcuates the hash value through the hashcode of the key. 
+Objects has some value of hashcode will store in a linked list.
+The query is fast because it determinet the location in the array through the hash code. The best time complexity for query is O(1) and worst is O(N).
+There is an internal class Node (implements Entry<K,V>) which has 
+attributes of key , value and next pointer. This Node is the HashMap key-value pair.
+
+insertion
+-----------
+It first calculates the hash value based on key. if the array is empty , it allocates space according to the initial capacity target held in field threshold. Then it looks up the hash value position in the array. If it is not found , it creates new Node class with its key ,value, hash and assign to this array location. 
+If found,
+- if the first Node key is same as the key, it overrides the value.
+- if first Node is a TreeNode, it added this new pair into the TreeNode.
+- if it is linked list, assign this new pair after the last node.
+
+Deletion
+---------
+It first calculates the hash value based on key. 
+It then locates where the pair is. 
+- if the first Node key is same as the key, it moves the array pointer to next Node..
+- if it is a TreeNode, it removes pairs from the TreeNode.
+- if it is in the middle of linked list, assign the parent next pointer to the next Node after it.
+
